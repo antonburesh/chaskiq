@@ -111,9 +111,10 @@ Rails.application.configure do
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       address: ENV['SMTP_ADDRESS'],
+      port: ENV.fetch('SMTP_PORT', 587).to_i,
+      domain: ENV.fetch('SMTP_DOMAIN', 'wowvendor.com'),
       user_name: ENV['SMTP_USERNAME'], # Your SMTP user here.
       password: ENV['SMTP_PASSWORD'], # Your SMTP password here.
-      port: 587,
       authentication: :login,
       enable_starttls_auto: true
     }
