@@ -29,6 +29,8 @@ jobs:
         run: echo "short_sha=$(git rev-parse --short=7 ${{ github.sha }})" >> "$GITHUB_OUTPUT"
 
       - name: Build the Docker image
+        env:
+          IMAGE: ${{ secrets.DOCKER_USERNAME }}/chaskiq
         run: |
           docker build --build-arg APP_ENV=production \
                --build-arg RUBY_VERSION=3.3.5 \
@@ -36,23 +38,29 @@ jobs:
                --build-arg NODE_MAJOR=16 \
                --build-arg YARN_VERSION=1.13.0 \
                --build-arg BUNDLER_VERSION=2.4.10 \
-               -t ${{ github.repository }} \
+               -t "$IMAGE" \
                .
 
       - name: Tag and Push Docker image
         if: github.event_name == 'push'
+        env:
+          IMAGE: ${{ secrets.DOCKER_USERNAME }}/chaskiq
         run: |
-          docker tag ${{ github.repository }} ${{ github.repository }}:${{ steps.vars.outputs.short_sha }}
-          docker push ${{ github.repository }}:${{ steps.vars.outputs.short_sha }}
+          docker tag "$IMAGE" "$IMAGE:${{ steps.vars.outputs.short_sha }}"
+          docker push "$IMAGE:${{ steps.vars.outputs.short_sha }}"
 
       - name: Tag LATEST and Push Docker image
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          IMAGE: ${{ secrets.DOCKER_USERNAME }}/chaskiq
         run: |
-          docker tag ${{ github.repository }} ${{ github.repository }}:latest
-          docker push ${{ github.repository }}:latest
+          docker tag "$IMAGE" "$IMAGE:latest"
+          docker push "$IMAGE:latest"
 
       - name: Tag RELEASE and Push Docker image
         if: github.event_name == 'release'
+        env:
+          IMAGE: ${{ secrets.DOCKER_USERNAME }}/chaskiq
         run: |
-          docker tag ${{ github.repository }} ${{ github.repository }}:${{ github.ref_name }}
-          docker push ${{ github.repository }}:${{ github.ref_name }}
+          docker tag "$IMAGE" "$IMAGE:${{ github.ref_name }}"
+          docker push "$IMAGE:${{ github.ref_name }}"
