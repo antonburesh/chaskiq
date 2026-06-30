@@ -14,13 +14,14 @@ GIT
       roadie (~> 5.0)
 
 GIT
-  remote: https://github.com/jules-w2/globalize.git
-  revision: 6013c2dd615759ff55892f950b4cb7e8ea36c641
+  remote: https://github.com/globalize/globalize.git
+  revision: 38e5fe5aebb43fbef54f926b05a57b4f6ce72753
   branch: main
   specs:
-    globalize (6.3.0)
-      activemodel (>= 4.2, < 8)
-      activerecord (>= 4.2, < 8)
+    globalize (7.1.3)
+      activemodel (>= 7.0, < 8.2)
+      activerecord (>= 7.0, < 8.2)
+      activesupport (>= 7.0, < 8.2)
       request_store (~> 1.0)
 
 GIT
@@ -203,8 +204,8 @@ GEM
     base64 (0.1.2)
     bcrypt (3.1.19)
     bcrypt (3.1.19-java)
-    bigdecimal (3.1.8)
-    bigdecimal (3.1.8-java)
+    bigdecimal (4.1.2)
+    bigdecimal (4.1.2-java)
     bindex (0.8.1)
     biz (1.8.2)
       clavius (~> 1.0)
@@ -221,8 +222,8 @@ GEM
     code-scanning-rubocop (0.6.1)
       rubocop (~> 1.0)
     coderay (1.1.3)
-    concurrent-ruby (1.3.4)
-    connection_pool (2.4.1)
+    concurrent-ruby (1.3.7)
+    connection_pool (3.0.2)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -259,7 +260,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    drb (2.2.1)
+    drb (2.2.3)
     email_reply_trimmer (0.1.13)
     erubi (1.13.0)
     execjs (2.9.1)
@@ -369,7 +370,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    i18n (1.14.6)
+    i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-js (4.0.1)
       glob
@@ -416,7 +417,7 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    logger (1.6.1)
+    logger (1.7.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -430,7 +431,9 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
-    minitest (5.25.1)
+    minitest (6.0.6)
+      drb (~> 2.0)
+      prism (~> 1.5)
     msgpack (1.7.2)
     msgpack (1.7.2-java)
     multi_json (1.15.0)
@@ -483,6 +486,7 @@ GEM
       activesupport (>= 5.2)
     phonelib (0.8.4)
     php_serialize (1.2)
+    prism (1.9.0)
     propshaft (0.7.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -506,7 +510,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     racc (1.8.1-java)
-    rack (2.2.10)
+    rack (2.2.23)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-protection (3.1.0)
@@ -639,7 +643,7 @@ GEM
     searchkick (5.4.0)
       activemodel (>= 6.1)
       hashie
-    securerandom (0.3.1)
+    securerandom (0.4.1)
     shoulda (4.0.0)
       shoulda-context (~> 2.0)
       shoulda-matchers (~> 4.0)
@@ -688,7 +692,7 @@ GEM
     temple (0.10.3)
     thor (1.3.2)
     tilt (2.3.0)
-    timeout (0.4.1)
+    timeout (0.6.1)
     timezone (1.3.23)
     truemail (3.0.9)
       simpleidn (~> 0.2.1)
